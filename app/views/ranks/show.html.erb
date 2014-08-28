@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Playerid:</strong>
+  <%= @rank.playerID %>
+</p>
+
+<p>
+  <strong>Sportid:</strong>
+  <%= @rank.sportID %>
+</p>
+
+<p>
+  <strong>Position:</strong>
+  <%= @rank.position %>
+</p>
+
+<%= link_to 'Edit', edit_rank_path(@rank) %> |
+<%= link_to 'Back', ranks_path %>
