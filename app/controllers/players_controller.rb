@@ -26,6 +26,8 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
 
+    @player.userID = current_user.id
+
     respond_to do |format|
       if @player.save
         format.html { redirect_to @player, notice: 'Player was successfully created.' }
