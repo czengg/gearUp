@@ -1,24 +1,20 @@
 <h1>Listing ranks</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Playerid</th>
-      <th>Sportid</th>
+      <th>Player Name</th>
+      <th>Sport</th>
       <th>Position</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @ranks.each do |rank| %>
       <tr>
-        <td><%= rank.player_id %></td>
-        <td><%= rank.sport_id %></td>
+        <td><%= link_to rank.player.name, rank.player %></td>
+        <td><%= rank.sport.name %></td>
         <td><%= rank.position %></td>
-        <td><%= link_to 'Show', rank %></td>
-        <td><%= link_to 'Edit', edit_rank_path(rank) %></td>
-        <td><%= link_to 'Destroy', rank, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
