@@ -1,5 +1,32 @@
-<h1>New player</h1>
+<h1>New Player</h1>
 
+<!--
 <%= render 'form' %>
 
 <%= link_to 'Back', players_path %>
+-->
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@player) do |f| %>
+      <!--<%= render 'shared/error_messages' %>-->
+
+      <%= f.label :first_name, "First Name" %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name, "Last Name"%>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :phone, "Mobile Number"%>
+      <%= f.text_field :phone %>
+
+      <%= f.label :zip, "Zip Code"%>
+      <%= f.text_field :zip %>
+
+
+      <%= f.submit "Create Player", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+</div>
+

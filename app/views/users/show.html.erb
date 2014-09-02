@@ -1,19 +1,5 @@
-<p id="notice"><%= notice %></p>
+<% provide(:title, @user.email) %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<% player = Player.where(:userID => @user.id).first %>
 
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Password confirmation:</strong>
-  <%= @user.password_confirmation %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h1><%= player.first_name %><%= player.last_name %></h1>
