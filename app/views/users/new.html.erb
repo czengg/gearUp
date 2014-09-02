@@ -1,26 +1,10 @@
-<% provide(:title, 'Sign up') %>
-<h1>Sign up</h1>
-<div class="hero-unit-white">
-
-<div class="row">
-  <div class="span6 offset3">
-
-  	<p>Already a user? <%= link_to "Sign in", 'login_path' %></p> </sbr>
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages' %>
-
-      <%= f.label :email%>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirmation" %>
-      <%= f.password_field :password_confirmation %>
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
-
+<div class="home-container">
+  <div class="logo-container">
+    <%= image_tag('logo.png') %>
+    <%= image_tag('logo-written.png') %>
   </div>
-</div>
+  <div class="signup-container">
+    <h1>Sign Up</h1>
+    <%= render 'form' %>
+  </div>
 </div>
