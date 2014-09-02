@@ -11,33 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140902214817) do
+ActiveRecord::Schema.define(version: 20140902231719) do
 
   create_table "matches", force: true do |t|
     t.string   "location"
-    t.integer  "playerOneID"
-    t.integer  "playerTwoID"
-    t.integer  "sportID"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "player_one_id"
+    t.integer  "player_two_id"
+    t.integer  "sport_id"
   end
 
   create_table "players", force: true do |t|
     t.string   "first_name"
     t.string   "last_name"
-    t.integer  "userID"
     t.string   "phone"
     t.string   "zip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "ranks", force: true do |t|
-    t.integer  "playerID"
-    t.integer  "sportID"
     t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "player_id"
+    t.integer  "sport_id"
   end
 
   create_table "sports", force: true do |t|

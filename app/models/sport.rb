@@ -11,4 +11,7 @@ class Sport < ActiveRecord::Base
 	# VALIDATIONS
 	validates_presence_of :name
 
+	# METHODS
+
+
 end

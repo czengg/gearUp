@@ -26,7 +26,7 @@ class PlayersController < ApplicationController
   def create
     @player = Player.new(player_params)
 
-    @player.userID = current_user.id
+    @player.user_id = current_user.id
 
     respond_to do |format|
       if @player.save
@@ -71,6 +71,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:first_name, :last_name, :userID, :phone, :zip)
+      params.require(:player).permit(:first_name, :last_name, :user_id, :phone, :zip)
     end
 end

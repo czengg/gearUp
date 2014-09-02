@@ -7,7 +7,6 @@
 </p>
 
 
-
 <table class="table table-striped">
   <thead>
     <tr>
@@ -20,9 +19,8 @@
   <tbody>
     <% @sport.ranks.each do |player| %>
       <tr>
-        <td><%= link_to player.name, player %></td>
-
-     	<td></td>
+        <td><%= link_to player.position, player %></td>
+     	  <td></td>
       </tr>
     <% end %>
   </tbody>

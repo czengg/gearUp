@@ -10,6 +10,7 @@ class RanksController < ApplicationController
   # GET /ranks/1
   # GET /ranks/1.json
   def show
+    @ranks = Rank.find(params[:id])
   end
 
   # GET /ranks/new
@@ -69,6 +70,6 @@ class RanksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def rank_params
-      params.require(:rank).permit(:playerID, :sportID, :position)
+      params.require(:rank).permit(:playerID, :sport_id, :position)
     end
 end
