@@ -2,4 +2,34 @@
 
 <% player = Player.where(:userID => @user.id).first %>
 
-<h1><%= player.first_name %><%= player.last_name %></h1>
+<h1><%= player.first_name + " " + player.last_name %></h1>
+
+
+
+<p>
+  <strong>First name:</strong>
+  <%= player.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= player.last_name %>
+</p>
+
+<p>
+  <strong>Userid:</strong>
+  <%= player.userID %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= player.phone %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= player.zip %>
+</p>
+
+<%= link_to 'Edit', edit_player_path(player) %> |
+<%= link_to 'Back', players_path %>

@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 			if Player.where(:userID => current_user.id).first == nil
 				redirect_to newplayer_path
 			else
-				redirect_back_or root_path
+				redirect_back_or current_user
 			end
 		else
       		flash.now[:error] = 'Invalid email/password combination'
