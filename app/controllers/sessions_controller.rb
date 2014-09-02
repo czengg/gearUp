@@ -6,13 +6,18 @@ class SessionsController < ApplicationController
 
   	def create
  		user = User.find_by_email(params[:session][:email])
-    	if user && user.authenticate(params[:session][:password])
+
+ 		if user.nil?
+	      flash.now[:error] = "Invalid email/password combination."
+	      @title = "Sign in"
+	      render 'new'
+	    elsif user && user.authenticate(params[:session][:password])
 			sign_in user
 
-			if Player.where(:userID => current_user.id).first == nil
+			if Player.where(:user_id => current_user.id).first == nil
 				redirect_to newplayer_path
 			else
-				redirect_back_or root_path
+				redirect_back_or current_user
 			end
 		else
       		flash.now[:error] = 'Invalid email/password combination'
