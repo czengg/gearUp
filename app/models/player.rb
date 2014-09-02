@@ -7,9 +7,14 @@ class Player < ActiveRecord::Base
 	has_many :sports, :through => :ranks	
 
 	# SCOPES
-	scope :alphabetical, -> { order("last name") }
+	scope :alphabetical, -> { order(:last_name) }
 
 	# METHODS
+
+	# a method to get owner name in last, first format
+	def name
+		last_name + ", " + first_name
+	end
 
 	# a method to get owner name in first last format
 	def proper_name

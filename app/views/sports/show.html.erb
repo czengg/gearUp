@@ -1,9 +1,33 @@
 <p id="notice"><%= notice %></p>
 
+<h1><%= @sport.name %></h1>
+  
 <p>
-  <strong>Name:</strong>
-  <%= @sport.name %>
+	<%= @sport.description %>
 </p>
+
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Player Name</th>
+      <th>Rank</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sport.ranks.each do |player| %>
+      <tr>
+        <td><%= link_to player.name, player %></td>
+
+     	<td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_sport_path(@sport) %> |
 <%= link_to 'Back', sports_path %>
