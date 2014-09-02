@@ -1,26 +1,21 @@
-<h1>Listing players</h1>
+<h1>Player Roster</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Userid</th>
+      <th>Name</th>
       <th>Phone</th>
       <th>Zip</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @players.each do |player| %>
       <tr>
-        <td><%= player.first_name %></td>
-        <td><%= player.last_name %></td>
-        <td><%= player.userID %></td>
+        <td><%= link_to player.proper_name, player %></td>
         <td><%= player.phone %></td>
         <td><%= player.zip %></td>
-        <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

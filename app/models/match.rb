@@ -8,5 +8,10 @@ class Match < ActiveRecord::Base
 	validates_presence_of :location
 	validates_presence_of :sportID
 
+	
+
+
+
+
 
 end
