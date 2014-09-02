@@ -13,8 +13,8 @@
   <tbody>
     <% @ranks.each do |rank| %>
       <tr>
-        <td><%= rank.playerID %></td>
-        <td><%= rank.sportID %></td>
+        <td><%= rank.player_id %></td>
+        <td><%= rank.sport_id %></td>
         <td><%= rank.position %></td>
         <td><%= link_to 'Show', rank %></td>
         <td><%= link_to 'Edit', edit_rank_path(rank) %></td>

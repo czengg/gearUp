@@ -13,5 +13,13 @@ class Sport < ActiveRecord::Base
 
 	# METHODS
 
+	def rankedPlayerPosition(playerID)
+		self.ranks.each do |rank|
+			if rank.player_id == playerID
+				return rank.position
+			end
+		end
+	end
+
 
 end

@@ -12,15 +12,18 @@
     <tr>
       <th>Player Name</th>
       <th>Rank</th>
-      <th colspan="1"></th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @sport.ranks.each do |player| %>
+    <% @sport.players.each do |player| %>
       <tr>
-        <td><%= link_to player.position, player %></td>
-     	  <td></td>
+        <td><%= link_to player.name, player %></td>
+     	  <td>
+          <%= @sport.rankedPlayerPosition(player.id) %> 
+        </td>
+        <td> Challenge! </td>
       </tr>
     <% end %>
   </tbody>
