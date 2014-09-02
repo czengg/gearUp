@@ -1,4 +1,4 @@
-<%= form_for(@rank) do |f| %>
+<%= simple_form_for @rank do |f| %>
   <% if @rank.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@rank.errors.count, "error") %> prohibited this rank from being saved:</h2>
@@ -11,19 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :playerID %><br>
-    <%= f.number_field :playerID %>
-  </div>
-  <div class="field">
-    <%= f.label :sportID %><br>
-    <%= f.number_field :sportID %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <fieldset>
+
+    <%= f.input :playerID, :collection => Player.alphabetical.all %>
+    <%= f.input :sportID, :collection => Sport.alphabetical.all %>
+    <%= f.input :position %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', ranks_path, :class => 'btn' %>
+    </div>
+  </fieldset>
 <% end %>
