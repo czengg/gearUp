@@ -11,21 +11,28 @@
     </div>
   <% end %>
 
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :location %><br>
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :playerOneID %><br>
-    <%= f.number_field :playerOneID %>
+    <%= f.label :player_one_id %><br>
+    <%= f.number_field :player_one_id %>
   </div>
   <div class="field">
-    <%= f.label :playerTwoID %><br>
-    <%= f.number_field :playerTwoID %>
+    <%= f.label :player_two_id %><br>
+    <%= f.number_field :player_two_id %>
   </div>
   <div class="field">
-    <%= f.label :sportID %><br>
-    <%= f.number_field :sportID %>
+    <%= f.label :sport_id %><br>
+    <%= f.number_field :sport_id %>
+  </div> -->
+
+
+
+  <div class="field">
+    <%= f.label :winner_id %><br>
+    <%= f.select :winner_id, [[Player.where(:user_id => @match.player_one_id).first.first_name, @match.player_one_id], [Player.where(:user_id => @match.player_two_id).first.first_name, @match.player_two_id]] %>
   </div>
   <div class="actions">
     <%= f.submit %>
