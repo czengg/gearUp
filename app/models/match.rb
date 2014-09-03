@@ -6,9 +6,10 @@ class Match < ActiveRecord::Base
 
 	# VALIDATIONS
 	validates_presence_of :location
-	validates_presence_of :sportID
+	validates_presence_of :sport_id
 
-	
+	# SCOPES
+	scope :by_location, -> { order("location") }
 
 	
 

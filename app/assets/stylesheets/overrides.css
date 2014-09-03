@@ -122,3 +122,8 @@
 	font-family: HelveticaNeue-Thin;
 	margin: 15px;
 }
+
+.image-circle-green {
+	border-radius: 50%;
+	background-color: #009245; 
+}

@@ -3,6 +3,7 @@ class Rank < ActiveRecord::Base
 	# RELATIONSHIPS
 	belongs_to :player
 	belongs_to :sport
+	belongs_to :match
 
 	# VALIDATIONS
 	validates_presence_of :score

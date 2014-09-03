@@ -14,7 +14,7 @@
   <fieldset>
 
     <%= f.input :player_id, :collection => Player.alphabetical.all %>
-    <%= f.input :sport_id, :collection => Sport.alphabetical.all %>
+    <%= f.input :match_id, :collection => Match.all, :label_method => :created_at, :value_method => :id,:label => "Match" %>
     <%= f.input :score %>
 
     <div class="form-actions">
