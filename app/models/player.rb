@@ -2,9 +2,10 @@ class Player < ActiveRecord::Base
 
 	# RELATIONSHIPS
 	has_many :ranks
-	has_many :matches
+	has_many :matches, :foreign_key => :player_one_id
+	has_many :matches, :foreign_key => :player_two_id
 	has_one :user
-	has_many :sports, :through => :ranks	
+	has_many :sports, :through => :matches 	
 
 	# SCOPES
 	scope :alphabetical, -> { order(:last_name) }
@@ -38,7 +39,8 @@ class Player < ActiveRecord::Base
 		Match.by_player_two(self.id).each do |match|
 			array.push(match)
 		end
-		array.sort_by{|d| match.created_at}.take(10)
+		array.sort_by{|match| match.created_at}.take(10)
 	end
+
 
 end
