@@ -21,4 +21,11 @@ class Player < ActiveRecord::Base
 		first_name + " " + last_name
 	end
 
+	def final_score
+		Ranks.for_player(self.id).each do |rank|
+			total_score += rank.score
+		end
+		return total_score
+	end
+
 end

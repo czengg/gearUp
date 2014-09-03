@@ -1,11 +1,11 @@
-<h1>Listing ranks</h1>
+<h1>Score Board</h1>
 
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Player Name</th>
       <th>Sport</th>
-      <th>Position</th>
+      <th>Score</th>
     </tr>
   </thead>
 
@@ -14,7 +14,7 @@
       <tr>
         <td><%= link_to rank.player.name, rank.player %></td>
         <td><%= rank.sport.name %></td>
-        <td><%= rank.position %></td>
+        <td><%= rank.score %></td>
       </tr>
     <% end %>
   </tbody>

@@ -16,7 +16,7 @@ class Sport < ActiveRecord::Base
 	def rankedPlayerPosition(playerID)
 		self.ranks.each do |rank|
 			if rank.player_id == playerID
-				return rank.position
+				return rank.score
 			end
 		end
 	end
