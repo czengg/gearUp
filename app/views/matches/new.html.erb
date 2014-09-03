@@ -9,7 +9,7 @@
       <%= f.label :sport_id%>
       <%= f.select :sport_id, Sport.all.collect {|sport| [ sport.name, sport.id ] } %>
 
-      <%= f.hidden_field :player_two_id, :value => params[:foo_param] %>
+      <%= f.hidden_field :player_two_id, :value => params[:idNum] %>
 
 
       <%= f.submit "Challenge", class: "btn btn-large btn-primary" %>

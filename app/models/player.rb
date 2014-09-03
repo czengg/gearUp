@@ -69,10 +69,10 @@ class Player < ActiveRecord::Base
 	def get_matches
 		array = Array.new
 		Match.by_player_one(self.id).each do |match|
-				array.push(match)
+			array.push(match)
 		end
 		Match.by_player_two(self.id).each do |match|
-				array.push(match)
+			array.push(match)
 		end
 		return array
 	end

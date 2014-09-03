@@ -11,10 +11,10 @@
       <div class="panel-body">
         <ul>
           <% Player.find(User.find(current_user.id)).last_ten(sport.id).each do |match| %>
-            <% if match.winner_id != Player.find(User.find(current_user.id)).id %>
-              <li>LOST - <%=Player.find(match.player_one_id).proper_name %> vs <%=Player.find(match.player_two_id).proper_name%></li>
-            <% elsif match.winner_id == Player.find(User.find(current_user.id)).id %>
-              <li>WON - <%=Player.find(match.player_one_id).proper_name%> vs <%=Player.find(match.player_two_id).proper_name%></li>
+            <% if match.winner_id != Player.find(User.find(current_user.id)).id and !match.winner_id.nil?  %>
+              <li>LOST - <%= link_to Player.find(match.player_one_id).proper_name + " vs " + Player.find(match.player_two_id).proper_name, match%></li>
+            <% elsif match.winner_id == Player.find(User.find(current_user.id)).id and !match.winner_id.nil? %>
+              <li>WON - <%= link_to Player.find(match.player_one_id).proper_name + " vs " + Player.find(match.player_two_id).proper_name, match%></li>
             <% end %>
           <% end %>
         </ul>
@@ -32,7 +32,7 @@
     <div id="collapseTwo<%= sport.id %>" class="panel-collapse collapse">
       <div class="panel-body">
         <% Player.find(User.find(current_user.id)).get_your_challenges(sport.id).each do |match| %>
-            <li><%=Player.find(match.player_one_id).proper_name %> vs <%=Player.find(match.player_two_id).proper_name%></li>
+            <li><%= link_to Player.find(match.player_one_id).proper_name + " vs " + Player.find(match.player_two_id).proper_name, match%></li>
         <% end %>
       </div>
     </div>
@@ -48,7 +48,7 @@
     <div id="collapseThree<%= sport.id %>" class="panel-collapse collapse">
       <div class="panel-body">
         <% Player.find(User.find(current_user.id)).get_challenges_to_you(sport.id).each do |match| %>
-            <li><%=Player.find(match.player_one_id).proper_name %> vs <%=Player.find(match.player_two_id).proper_name%></li>
+            <li><%= link_to Player.find(match.player_one_id).proper_name + " vs " + Player.find(match.player_two_id).proper_name, match%></li>
         <% end %>
       </div>
     </div>

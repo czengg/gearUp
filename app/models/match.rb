@@ -17,6 +17,9 @@ class Match < ActiveRecord::Base
 	# SCOPES
 	scope :by_location, -> { order("location") }
 
+	# METHODS
+	
+
 	
 
 

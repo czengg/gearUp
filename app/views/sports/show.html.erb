@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div class="arrow-nav"><h1>Rankings</h1></div>
+<div class="arrow-nav"><h1><%= link_to "Rankings", sports_path %></h1></div>
 <div class="arrow-nav sport-name"><h1><%= @sport.name %></h1></div>
 
 <div class="home-container">
@@ -27,7 +27,7 @@
             <td>
               <%= @sport.rankedPlayerPosition(player.id) %> 
             </td>
-            <td> Challenge! </td>
+            <td> <%= link_to "Challenge!", new_match_path(:idNum => player.id) %> </td>
           </tr>
         <% end %>
       </tbody>

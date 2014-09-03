@@ -28,6 +28,7 @@ class MatchesController < ApplicationController
 
     @match.player_one_id = current_user.id
 
+
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
@@ -44,6 +45,9 @@ class MatchesController < ApplicationController
   def update
     respond_to do |format|
       if @match.update(match_params)
+        if @match.winner_id
+          Rank.create(:player_id => @match.winner_id, :match_id => @match.id, :score => 1)
+        end
         format.html { redirect_to @match, notice: 'Match was successfully updated.' }
         format.json { render :show, status: :ok, location: @match }
       else

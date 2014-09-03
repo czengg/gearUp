@@ -1,0 +1,11 @@
+
+
+  <fieldset>
+
+    <%= f.input :winner_id, :collection => [[Player.where(:user_id => @match.player_one_id).first.first_name, @match.player_one_id], [Player.where(:user_id => @match.player_two_id).first.first_name, @match.player_two_id]] %>
+
+    <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+    </div>
+
+  </fieldset>

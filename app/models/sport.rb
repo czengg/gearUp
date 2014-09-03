@@ -3,7 +3,7 @@ class Sport < ActiveRecord::Base
 	# RELATIONSHIPS
 	has_many :ranks
 	has_many :matches
-	has_many :players, :through => :ranks
+	has_many :players, :through => :matches
 
 	# SCOPES
 	scope :alphabetical, -> { order("name") }
@@ -28,7 +28,8 @@ class Sport < ActiveRecord::Base
 	def players
 		array = Array.new
 		self.matches.each do |match|
-			array.push(match.player)
+			array.push(Player.find(match.player_one_id))
+			array.push(Player.find(match.player_two_id))
 		end
 		array
 	end

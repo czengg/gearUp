@@ -1,29 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Location:</strong>
-  <%= @match.location %>
-</p>
 
-<p>
-  <strong>Playeroneid:</strong>
-  <%= @match.player_one_id %>
-</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= Player.find(@match.player_one_id).proper_name + " vs. " +  Player.find(@match.player_two_id).proper_name%></h3>
+  </div>
+  <div class="panel-body">
+    <p>
+      <strong>Sport:</strong>
+      <%= Sport.find(@match.sport_id).name %>
+    </p>
+    <p>
+      <strong>Location:</strong>
+      <%= @match.location %>
+    </p>
+  
+  <% if @match.winner_id.nil? %>
+  </div>
+    <div class="btn btn-custom"><%= link_to Player.find(@match.player_one_id).proper_name+" won!", match_path(@match, :match => { :winner_id => Player.find(@match.player_one_id).id }), :method => 'put' %></div>
+    <div class="btn btn-custom"><%= link_to Player.find(@match.player_two_id).proper_name+" won!", match_path(@match, :match => { :winner_id => Player.find(@match.player_two_id).id }), :method => 'put' %></div>
+  <% else %>
+    <p>
+      <strong>Winner:</strong>
+      <%= Player.find(@match.winner_id).proper_name %>
+    </p>
+  </div>
+  <% end %>
+</div>
 
-<p>
-  <strong>Playertwoid:</strong>
-  <%= @match.player_two_id %>
-</p>
 
-<p>
-  <strong>Sportid:</strong>
-  <%= @match.sport_id %>
-</p>
-
-<p>
-  <strong>Winnerid:</strong>
-  <%= @match.winner_id %>
-</p>
-
-<%= link_to 'Who Won?', edit_match_path(@match) %> |
-<%= link_to 'Back', matches_path %>
