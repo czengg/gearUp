@@ -1,7 +1,7 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show,:edit, :update, :destroy]
+  # before_action :set_player, only: [:show,:edit, :update, :destroy]
   before_filter :correct_user,   only: [:edit, :update]
-  before_filter :signed_in_user, only: [:edit, :update, :destroy]
+  before_filter :signed_in_user, only: [:show, :edit, :update, :destroy]
 
 
   # GET /players
@@ -80,7 +80,7 @@ class PlayersController < ApplicationController
     def signed_in_user
       unless signed_in?
         store_location
-        redirect_to login_path, notice: "Please sign in."
+        redirect_to signin_path, notice: "Please sign in."
       end
     end
     
