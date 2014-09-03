@@ -8,7 +8,6 @@ class Player < ActiveRecord::Base
 
 	# SCOPES
 	scope :alphabetical, -> { order(:last_name) }
-	scope :last_ten, -> { joins(:matches).where('player_one_id = ? OR player_two_id', :id,:id).limit(10) } 
 
 	# METHODS
 
@@ -29,6 +28,17 @@ class Player < ActiveRecord::Base
 			end
 		end
 		return total_score
+	end
+
+	def last_ten
+		array = Array.new
+		Match.by_player_one(self.id).each do |match|
+			array.push(match)
+		end
+		Match.by_player_two(self.id).each do |match|
+			array.push(match)
+		end
+		array.sort_by{|d| match.created_at}.take(10)
 	end
 
 end
