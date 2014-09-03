@@ -2,15 +2,21 @@
 	<div class="dashboard-container">
 		<h1>Your Sports</h1>
 		<ul class="sports-list">
-			<% Player.find(User.find(current_user.id)).ranks.each do |rank| %>
-				<div class="arrow-container" onclick="clicked(<%=rank.match.sport.name%>, this);">
-					<li class="sport"><%=rank.match.sport.name%></li>
-				</div>
+			<% player_match_ids = [] %>
+			<% Player.find(User.find(current_user.id)).matches.each do |match| %>
+				<% player_match_ids.push(match.sport_id) %>
+			<% end %>
+			<% Sport.alphabetical.all.each do |sport| %>
+				<% if player_match_ids.uniq.include?(sport.id) %>		
+					<div class="arrow-container" onclick="clicked(<%=sport.name%>, this);">
+						<li class="sport"><%=sport.name%></li>
+					</div>
+				<% end %>
 			<% end %>
 		</ul>
-		<% Player.find(User.find(current_user.id)).ranks.each do |rank| %>
-			<div class="sport-info" id="<%=rank.match.sport.name%>">
-				<h1 class="inline">Your Score</h1><div class="inline sport-score"><%=rank.score%></div>
+		<% Player.find(User.find(current_user.id)).matches.each do |match|  %>
+			<div class="sport-info" id="<%=match.sport.name%>">
+				<h1 class="inline">Your Score</h1><div class="inline sport-score"><%=match.rank.score%></div>
 				<h1>Recent Matches</h1>
 				<% Player.find(User.find(current_user.id)).last_ten.each do |match| %>
 					<% if match.rank.score < 0 %>

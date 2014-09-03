@@ -3,6 +3,7 @@ class Match < ActiveRecord::Base
 	# RELATIONSHIPS
 	belongs_to :sport
 	belongs_to :player
+	has_one :rank
 
 	# SCOPE
 	scope :by_player_one, lambda {|player_id| where('player_one_id = ?', player_id)}
