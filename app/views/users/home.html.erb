@@ -17,16 +17,8 @@
 		<% Player.find(User.find(current_user.id)).matches.each do |match|  %>
 			<div class="sport-info" id="<%=match.sport.name%>">
 				<h1 class="inline">Your Score</h1><div class="inline sport-score"><%=match.rank.score%></div>
-				<h1>Recent Matches</h1>
-				<% Player.find(User.find(current_user.id)).last_ten.each do |match| %>
-					<% if match.rank.score < 0 %>
-						LOST - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%>
-					<% elsif match.rank.score > 0 %>
-						WON - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%>
-					<% else %>
-						TIE - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%>
-					<% end %>
-				<% end %>
+				<%= render :partial => 'accordion', :locals => { :match => @match } %>				
+				
 			</div>
 		<% end %>
 	</div>
