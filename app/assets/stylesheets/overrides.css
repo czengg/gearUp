@@ -82,6 +82,7 @@
 	width: 226px;
 	height: 40px;
 	cursor: pointer;
+	margin: 10px 0;
 }
 
 .sports-list .arrow-container:hover, .arrow-container.active {
