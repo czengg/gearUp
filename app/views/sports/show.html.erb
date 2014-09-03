@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @sport.name %></h1>
+<div class="arrow-nav"><h1>Rankings</h1></div>
+<div class="arrow-nav sport-name"><h1><%= @sport.name %></h1></div>
 
 <div class="home-container">
-  <div class="logo-container">
+  <div class="description-container">
     <%= image_tag('logo.png') %>
     <p>
       <%= @sport.description %>
     </p>
   </div>
-  <div class="signup-container">
+  <div class="ranking-container">
     <table class="table table-striped">
       <thead>
         <tr>
@@ -34,11 +35,3 @@
   </div>
 </div>
   
-
-
-
-
-
-
-<%= link_to 'Edit', edit_sport_path(@sport) %> |
-<%= link_to 'Back', sports_path %>

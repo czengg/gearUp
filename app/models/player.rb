@@ -9,6 +9,7 @@ class Player < ActiveRecord::Base
 
 	# SCOPES
 	scope :alphabetical, -> { order(:last_name) }
+	scope :for_user, lambda {|user_id| where('user_id = ?', user_id)}
 
 	# METHODS
 

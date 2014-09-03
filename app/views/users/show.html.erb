@@ -1,41 +1,46 @@
 <% provide(:title, @user.email) %>
 
-<% player = Player.where(:user_id => @user.id).first %>
+<div class="home-container">
+  <div class="logo-container">
+    <%= image_tag('logo.png') %>
+    <%= image_tag('logo-written.png') %>
+  </div>
+  <div class="profile-container">
+    <% player = Player.where(:user_id => @user.id).first %>
 
-<h1><%= player.first_name + " " + player.last_name %></h1>
+	<h1><%= player.first_name + " " + player.last_name %></h1>
 
-<p id="notice"><%= notice %></p>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First name:</strong>
-  <%= player.first_name %>
-</p>
+	<p>
+	  <strong>First name:</strong>
+	  <%= player.first_name %>
+	</p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= player.last_name %>
-</p>
-
-
-
-<p>
-  <strong>Phone:</strong>
-  <%= player.phone %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= player.zip %>
-</p>
-
-<%= link_to 'Edit', edit_player_path(player) %> |
-<%= link_to 'Back', players_path %>
+	<p>
+	  <strong>Last name:</strong>
+	  <%= player.last_name %>
+	</p>
 
 
 
-<% if @user!=current_user %>
+	<p>
+	  <strong>Phone:</strong>
+	  <%= player.phone %>
+	</p>
 
-<br></br>
-<%= link_to "Challenge?", newmatch_path(:foo_param => player.id) %>
+	<p>
+	  <strong>Zip:</strong>
+	  <%= player.zip %>
+	</p>
 
-<% end %>
+	<% if @user!=current_user %>
+
+	<br></br>
+	<%= link_to "Challenge?", newmatch_path(:foo_param => player.id) %>
+
+	<% end %>
+  </div>
+</div>
+
+
