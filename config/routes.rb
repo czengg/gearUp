@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'users#home'
   match '/signup', to: 'users#new', via: 'get'
   match '/newplayer', to: 'players#new', via: 'get'
+  match '/newmatch', to: 'matches#new', via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 

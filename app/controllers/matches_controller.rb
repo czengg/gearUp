@@ -26,6 +26,8 @@ class MatchesController < ApplicationController
   def create
     @match = Match.new(match_params)
 
+    @match.player_one_id = current_user.id
+
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
@@ -69,6 +71,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:location, :player_one_id, :player_two_id, :sport_id)
+      params.require(:match).permit(:location, :player_one_id, :player_two_id, :sport_id, :winner_id)
     end
 end
