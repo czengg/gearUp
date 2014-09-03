@@ -1,33 +1,43 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= @sport.name %></h1>
+
+<div class="home-container">
+  <div class="logo-container">
+    <%= image_tag('logo.png') %>
+    <p>
+      <%= @sport.description %>
+    </p>
+  </div>
+  <div class="signup-container">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Player Name</th>
+          <th>Rank</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @sport.players.uniq.each do |player| %>
+          <tr>
+            <td><%= link_to player.name, player %></td>
+            <td>
+              <%= @sport.rankedPlayerPosition(player.id) %> 
+            </td>
+            <td> Challenge! </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
   
-<p>
-	<%= @sport.description %>
-</p>
 
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Player Name</th>
-      <th>Rank</th>
-      <th>&nbsp;</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @sport.players.each do |player| %>
-      <tr>
-        <td><%= link_to player.name, player %></td>
-     	  <td>
-          <%= @sport.rankedPlayerPosition(player.id) %> 
-        </td>
-        <td> Challenge! </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
 
 
 <%= link_to 'Edit', edit_sport_path(@sport) %> |

@@ -11,7 +11,14 @@ class Rank < ActiveRecord::Base
 	scope :for_player, lambda {|player_id| where('player_id = ?', player_id)}
 
 	# METHODS
-
+	def player_final_score(playerID)
+		Ranks.for_player(playerID).each do |rank|
+			if rank.player_id == playerID
+				total_score += rank.score
+			end
+		end
+		return total_score
+	end
 
 
 	
