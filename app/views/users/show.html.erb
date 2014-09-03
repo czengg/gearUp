@@ -1,5 +1,5 @@
 <% provide(:title, @user.email) %>
 
-<% player = Player.where(:userID => @user.id).first %>
+<% player = Player.where(:user_id => @user.id).first %>
 
 <h1><%= player.first_name %><%= player.last_name %></h1>
