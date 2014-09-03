@@ -45,6 +45,12 @@
 	display: inline-block;
 }
 
+.sport-container {
+	font-family: HelveticaNeue-Light;
+	width: 45%;
+	display: inline-block;
+}
+
 .btn-custom {
   background-color: hsl(150, 74%, 44%) !important;
   background-repeat: repeat-x;
@@ -124,7 +130,11 @@
 	margin: 15px;
 }
 
-.image-circle-green {
-	border-radius: 50%;
-	background-color: #009245; 
+.logo-columns {
+	-webkit-column-count: 3;
+	-moz-column-count: 3;
+	column-count: 3;
+	-webkit-column-gap: 40px;
+	-moz-column-gap: 40px;
+	column-gap: 40px;
 }
