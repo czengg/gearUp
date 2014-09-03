@@ -1,5 +1,8 @@
 class PlayersController < ApplicationController
-  before_action :set_player, only: [:show, :edit, :update, :destroy]
+  before_action :set_player, only: [:show,:edit, :update, :destroy]
+  before_filter :correct_user,   only: [:edit, :update]
+  before_filter :signed_in_user, only: [:edit, :update, :destroy]
+
 
   # GET /players
   # GET /players.json
@@ -30,7 +33,7 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
-        format.html { redirect_to @player, notice: 'Player was successfully created.' }
+        format.html { redirect_to current_user, notice: 'Player was successfully created.' }
         format.json { render :show, status: :created, location: @player }
       else
         format.html { render :new }
@@ -72,5 +75,17 @@ class PlayersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
       params.require(:player).permit(:first_name, :last_name, :user_id, :phone, :zip)
+    end
+
+    def signed_in_user
+      unless signed_in?
+        store_location
+        redirect_to login_path, notice: "Please sign in."
+      end
+    end
+    
+    def correct_user
+      @user = User.find(params[:id])
+      redirect_to(root_path) unless current_user?(@user)
     end
 end
