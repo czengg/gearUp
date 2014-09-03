@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20140903010603) do
-
+ActiveRecord::Schema.define(version: 20140903021053) do
 
   create_table "matches", force: true do |t|
     t.string   "location"

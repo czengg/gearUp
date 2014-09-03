@@ -1,15 +1,11 @@
-<h1>New Player</h1>
-
-<!--
-<%= render 'form' %>
-
-<%= link_to 'Back', players_path %>
--->
-
-<div class="row">
-  <div class="span6 offset3">
+<div class="home-container">
+  <div class="logo-container">
+    <%= image_tag('logo.png') %>
+    <%= image_tag('logo-written.png') %>
+  </div>
+  <div class="signup-container">
+    <h1>Sign Up</h1>
     <%= form_for(@player) do |f| %>
-      <!--<%= render 'shared/error_messages' %>-->
 
       <%= f.label :first_name, "First Name" %>
       <%= f.text_field :first_name %>
@@ -24,9 +20,7 @@
       <%= f.text_field :zip %>
 
 
-      <%= f.submit "Create Player", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create Player", class: "btn btn-large btn-custom" %>
     <% end %>
   </div>
 </div>
-</div>
-
