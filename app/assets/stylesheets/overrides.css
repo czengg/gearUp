@@ -61,3 +61,64 @@
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
   -webkit-font-smoothing: antialiased;
 }
+
+.dashboard-container {
+	font-family: HelveticaNeue-Light;
+}
+
+.dashboard-container h1{
+	text-align: left;
+	font-family: HelveticaNeue-Light;
+}
+
+.sports-list {
+	width: 30%;
+	display: inline-block;
+}
+
+.sports-list .arrow-container{
+	list-style: none;
+	background: url('arrows-sprite.png') 0 0;
+	width: 226px;
+	height: 40px;
+	cursor: pointer;
+}
+
+.sports-list .arrow-container:hover, .arrow-container.active {
+	background: url('arrows-sprite.png') 0 40px;
+}
+
+.sports-list li {
+	padding: 10px;
+	font-size: 30px;
+	margin-left: 30px;
+	font-family: HelveticaNeue-Thin;
+	color: white;
+}
+
+.sport-info {
+	border: 2px solid #999999;
+    border-radius: 25px;
+    width: 60%;
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.sport-info h1 {
+	font-size: 35px;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.sport-score {
+	background-color: hsl(150, 74%, 44%);
+	border: 1px solid #999999;
+	border-radius: 5px;
+	font-size: 30px;
+	padding: 10px;
+	color: white;
+	font-family: HelveticaNeue-Thin;
+	margin: 15px;
+}

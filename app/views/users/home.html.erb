@@ -1,0 +1,31 @@
+<% if signed_in? %>
+	<div class="dashboard-container">
+		<h1>Your Sports</h1>
+		<ul class="sports-list">
+			<% Player.find(current_user.id).ranks.each do |rank| %>
+				<div class="arrow-container">
+					<li class="sport"><%=rank.sport.name%></li>
+				</div>
+			<% end %>
+		</ul>
+		<% Player.find(current_user.id).ranks.each do |rank| %>
+			<div class="sport-info">
+				<h1 class="inline">Your Score</h1><div class="inline sport-score"><%=rank.score%></div>
+				<h1>Recent Matches</h1>
+				<% Player.find(current_user.id).last_ten.each do |match| %>
+					<% if match.rank.score < 0 %>
+						LOST - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%>
+					<% elsif match.rank.score > 0 %>
+						WON - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%>
+					<% else %>
+						TIE - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%>
+					<% end %>
+				<% end %>
+			</div>
+		<% end %>
+	</div>
+<% else %>
+	<script type="text/javascript">
+		window.location.href="/users/new"
+	</script>
+<% end %>
