@@ -2,21 +2,19 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne<%= sport.id %>">
           Recent Matches
         </a>
       </h4>
     </div>
-    <div id="collapseOne" class="panel-collapse collapse in">
+    <div id="collapseOne<%= sport.id %>" class="panel-collapse collapse in">
       <div class="panel-body">
         <ul>
-          <% Player.find(User.find(current_user.id)).last_ten.each do |match| %>
-            <% if match.winner_id< 0 %>
-              <li>LOST - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%></li>
-            <% elsif match.rank.score > 0 %>
-              <li>WON - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%></li>
-            <% else %>
-              <li>TIE - <%=Player.find(match.player_one_id).name%> vs <%=Player.find(match.player_two_id).name%></li>
+          <% Player.find(User.find(current_user.id)).last_ten(sport.id).each do |match| %>
+            <% if match.winner_id != Player.find(User.find(current_user.id)).id %>
+              <li>LOST - <%=Player.find(match.player_one_id).proper_name %> vs <%=Player.find(match.player_two_id).proper_name%></li>
+            <% elsif match.winner_id == Player.find(User.find(current_user.id)).id %>
+              <li>WON - <%=Player.find(match.player_one_id).proper_name%> vs <%=Player.find(match.player_two_id).proper_name%></li>
             <% end %>
           <% end %>
         </ul>
@@ -26,28 +24,32 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-          Requested Challenges
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo<%= sport.id %>">
+          Requested Challenges <span class="badge"><%= Player.find(User.find(current_user.id)).get_your_challenges(sport.id).length %></span>
         </a>
       </h4>
     </div>
-    <div id="collapseTwo" class="panel-collapse collapse">
+    <div id="collapseTwo<%= sport.id %>" class="panel-collapse collapse">
       <div class="panel-body">
-        
+        <% Player.find(User.find(current_user.id)).get_your_challenges(sport.id).each do |match| %>
+            <li><%=Player.find(match.player_one_id).proper_name %> vs <%=Player.find(match.player_two_id).proper_name%></li>
+        <% end %>
       </div>
     </div>
   </div>
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          Incoming Challenges
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree<%= sport.id %>">
+          Incoming Challenges <span class="badge"><%= Player.find(User.find(current_user.id)).get_challenges_to_you(sport.id).length %></span>
         </a>
       </h4>
     </div>
-    <div id="collapseThree" class="panel-collapse collapse">
+    <div id="collapseThree<%= sport.id %>" class="panel-collapse collapse">
       <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        <% Player.find(User.find(current_user.id)).get_challenges_to_you(sport.id).each do |match| %>
+            <li><%=Player.find(match.player_one_id).proper_name %> vs <%=Player.find(match.player_two_id).proper_name%></li>
+        <% end %>
       </div>
     </div>
   </div>

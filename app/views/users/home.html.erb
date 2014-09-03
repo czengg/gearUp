@@ -3,7 +3,7 @@
 		<h1>Your Sports</h1>
 		<ul class="sports-list">
 			<% player_match_ids = [] %>
-			<% Player.find(User.find(current_user.id)).matches.each do |match| %>
+			<% Player.find(User.find(current_user.id)).get_matches.each do |match| %>
 				<% player_match_ids.push(match.sport_id) %>
 			<% end %>
 			<% Sport.alphabetical.all.each do |sport| %>
@@ -14,12 +14,14 @@
 				<% end %>
 			<% end %>
 		</ul>
-		<% Player.find(User.find(current_user.id)).matches.each do |match|  %>
-			<div class="sport-info" id="<%=match.sport.name%>">
-				<h1 class="inline">Your Score</h1><div class="inline sport-score"><%=match.rank.score%></div>
-				<%= render :partial => 'accordion', :locals => { :match => @match } %>				
-				
-			</div>
+		<% Sport.alphabetical.all.each do |sport| %>
+			<% if player_match_ids.uniq.include?(sport.id) %>
+				<div class="sport-info" id="<%=sport.name%>">
+					<h1 class="inline">Your Score</h1><div class="inline sport-score"><%=sport.rankedPlayerPosition(Player.find(User.find(current_user.id)).id)%></div>
+					<%= render :partial => 'accordion', :locals => { :sport => sport } %>				
+					
+				</div>
+			<% end %>
 		<% end %>
 	</div>
 <% else %>

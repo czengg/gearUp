@@ -15,9 +15,11 @@ class Sport < ActiveRecord::Base
 
 	def rankedPlayerPosition(playerID)
 		total_score = 0
-		self.ranks.each do |rank|
-			if rank.player_id == playerID
-				total_score += rank.score
+		self.matches.each do |match|
+			match.rank.each do |rank|
+				if rank.player_id == playerID
+					total_score += rank.score
+				end
 			end
 		end
 		return total_score

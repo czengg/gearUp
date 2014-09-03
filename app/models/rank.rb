@@ -13,7 +13,8 @@ class Rank < ActiveRecord::Base
 
 	# METHODS
 	def player_final_score(playerID)
-		Ranks.for_player(playerID).each do |rank|
+		total_score = 0
+		Rank.for_player(playerID).each do |rank|
 			if rank.player_id == playerID
 				total_score += rank.score
 			end

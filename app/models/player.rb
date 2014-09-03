@@ -3,7 +3,6 @@ class Player < ActiveRecord::Base
 	# RELATIONSHIPS
 	has_many :ranks
 	has_many :matches, :foreign_key => :player_one_id
-	has_many :matches, :foreign_key => :player_two_id
 	has_one :user
 	has_many :sports, :through => :matches 	
 
@@ -31,16 +30,52 @@ class Player < ActiveRecord::Base
 		return total_score
 	end
 
-	def last_ten
+	def last_ten(sportID)
 		array = Array.new
 		Match.by_player_one(self.id).each do |match|
-			array.push(match)
+			if match.sport_id == sportID
+				array.push(match)
+			end
 		end
 		Match.by_player_two(self.id).each do |match|
-			array.push(match)
+			if match.sport_id == sportID
+				array.push(match)
+			end
 		end
 		array.sort_by{|match| match.created_at}.take(10)
 	end
+
+	def get_your_challenges(sportID)
+		array = Array.new
+		Match.by_player_one(self.id).each do |match|
+			if match.sport_id == sportID and match.winner_id.nil?
+				array.push(match)
+			end
+		end
+		array.sort_by{|match| match.created_at}
+	end
+
+	def get_challenges_to_you(sportID)
+		array = Array.new
+		Match.by_player_two(self.id).each do |match|
+			if match.sport_id == sportID and match.winner_id.nil?
+				array.push(match)
+			end
+		end
+		array.sort_by{|match| match.created_at}
+	end
+
+	def get_matches
+		array = Array.new
+		Match.by_player_one(self.id).each do |match|
+				array.push(match)
+		end
+		Match.by_player_two(self.id).each do |match|
+				array.push(match)
+		end
+		return array
+	end
+
 
 
 end
