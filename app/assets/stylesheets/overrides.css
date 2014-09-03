@@ -51,6 +51,13 @@
 	display: inline-block;
 }
 
+.sportindex-container {
+	font-family: HelveticaNeue-Light;
+	width: 45%;
+	display: inline-block;
+	vertical-align: top;
+}
+
 .btn-custom {
   background-color: hsl(150, 74%, 44%) !important;
   background-repeat: repeat-x;
@@ -137,4 +144,37 @@
 	-webkit-column-gap: 40px;
 	-moz-column-gap: 40px;
 	column-gap: 40px;
+}
+
+.arrow-nav {
+	list-style: none;
+	background: url('arrows-sprite.png') 0 0;
+	width: 226px;
+	height: 40px;
+	cursor: pointer;
+	margin: 10px 0;
+}
+
+.arrow-nav h1{
+	color: white;
+	font-size: 30px;
+	font-family: HelveticaNeue-Thin;
+	font-style: none;
+	text-align: left;
+	padding: 5px 5px 5px 15px;
+}
+
+.sport {
+	font-size: 30px;
+	font-family: HelveticaNeue-Thin;
+	display: inline-block;
+	padding: 15px 0;
+}
+
+.sport a:hover {
+	text-decoration: none;
+	background-color: white;
+	color: hsl(150, 74%, 44%);
+	float: top;
+	padding: 15px 0;
 }

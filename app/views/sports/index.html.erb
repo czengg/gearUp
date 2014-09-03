@@ -1,25 +1,22 @@
-<h1>Available Sports</h1>
+<div class="arrow-nav"><h1>Rankings</h1></div>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="home-container">
+  <div class="logo-container">
+    <%= image_tag('logo.png') %>
+    <%= image_tag('logo-written.png') %>
+  </div>
+  <div class="sportindex-container">
+    <h1>Available Sports</h1>
     <% @sports.each do |sport| %>
-      <tr>
-        <td><%= link_to sport.name, sport %></td>
-        <td><%= link_to 'Edit', edit_sport_path(sport) %></td>
-        <td><%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="sport">
+        <%= link_to sport.name, sport %>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    <div>
+      <%= link_to 'New Sport', new_sport_path %>
+    </div>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Sport', new_sport_path %>
 
