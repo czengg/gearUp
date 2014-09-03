@@ -25,5 +25,12 @@ class Sport < ActiveRecord::Base
 		return total_score
 	end
 
+	def players
+		array = Array.new
+		self.matches.each do |match|
+			array.push(match.player)
+		end
+		array
+	end
 
 end
