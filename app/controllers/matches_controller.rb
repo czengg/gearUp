@@ -27,7 +27,6 @@ class MatchesController < ApplicationController
     @match = Match.new(match_params)
 
     @match.player_one_id = current_user.id
-    @match.winner_id = 0
 
     respond_to do |format|
       if @match.save
